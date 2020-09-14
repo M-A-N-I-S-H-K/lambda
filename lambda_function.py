@@ -20,7 +20,6 @@ class GrpcProcess:
             print(f"{ip}\t Response:\t{response}\n")
 
 
-if __name__ == "__main__":
+def lambda_handler(event, context):
     process = GrpcProcess()
     process.process()
-
