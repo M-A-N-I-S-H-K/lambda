@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package news_recommendation;
+
+// The greeting service definition.
+service Recommendation {
+  // Sends a greeting
+  rpc Recommend (RecommendationRequest) returns (RecommendationReply) {}
+  rpc Update (UpdateRequest) returns (UpdateReply) {}
+  rpc Similar (SimilarRequest) returns (SimilarReply) {}
+  rpc Status (StatusRequest) returns (StatusReply) {}
+}
+
+message UpdateRequest {
+  string VariableName = 1;
+  string VariableValue = 2;
+}
+
+message UpdateReply {
+  string data = 1;
+  bool status = 2;
+}
+
+// The request message containing the user's name.
+message RecommendationRequest {
+  string uuid = 1;
+  string country_code = 2;
+  string preferred_keywords = 3;
+  string preferred_categories = 4;
+  int32 max_items_in_row = 5;
+}
+
+// The response message containing status of recommendation
+message RecommendationReply {
+  bool data = 1;
+}
+
+message StatusReply {
+  string message = 1;
+  bool status = 2;
+}
+
+message StatusRequest {
+  string check =1;
+}
+
+message SimilarRequest {
+  string item_id =1;
+  int32 size = 2;
+  string country_code = 3;
+}
+
+message SimilarReply {
+  bool success = 1;
+  string message = 2;
+  string time_taken = 3;
+  string data = 4;
+}
+
+
